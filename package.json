@@ -1,0 +1,23 @@
+{
+  "name": "youtube-views-export",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gitryder/Youtube-Views-Export.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gitryder/Youtube-Views-Export/issues"
+  },
+  "homepage": "https://github.com/gitryder/Youtube-Views-Export#readme",
+  "dependencies": {
+    "@material/textfield": "^7.0.0",
+    "firebase-tools": "^8.7.0"
+  }
+}

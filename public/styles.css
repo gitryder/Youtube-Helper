@@ -1,0 +1,221 @@
+body {
+    background-color: #2F0153;
+
+    margin: 0;
+    font-family: "Inter";
+    font-style: normal;
+}
+
+/*
+Logged-Out Content Styles
+*/
+
+#logged-out-content {
+    display: none;
+	width: 100%;
+    height: 50%;
+    position: absolute;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+}
+.app-title {
+    font-weight: 600;
+    font-size: 64px;
+
+    text-align: center;
+}
+
+#btn-login {
+	background-color: white;
+	width: 150px;
+    height: 60px;
+    
+    margin: 10px 0px;
+
+	position: absolute;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+
+	font-weight: 500;
+	font-size: 25px;
+
+	border: 3px solid red;
+	border-radius: 20px;
+	color: black; 
+	padding: 5px 10px;	
+}
+
+#btn-login:hover {
+    background-color: red;
+    color: white;
+}
+
+/*
+Logged-In Content Styles
+*/
+#logged-in-content {
+    display: block;
+}
+
+/* Account Details Styles */
+div#logged-in-content {
+    padding: 10px 15px 0px 10px;
+}
+
+.indicator-img {
+    position: relative;
+    margin-left: 30px;
+}
+
+.indicator-img#account {
+    margin-top: 30px;
+}
+
+.account-details {
+    color: white;
+}
+
+.account-details#username {
+    margin: 0;
+
+    display: inline;
+    position: absolute; 
+    top: 36;   
+    left: 110; 
+
+    font-size: 42;
+    font-weight: 600;
+}
+
+.account-details#email {
+    margin: 0 0 0 0;
+
+    position: absolute;
+    left: 110;
+
+    font-size: 25;
+}
+
+button#btn-logout {
+    width: 120px;
+    height: 35px;
+
+    position: absolute;
+    top: 125;
+    left: 110;
+
+    font-size: 20;
+    font-weight: 500;
+    color: #FF8A00;
+    background-color: #2F0153;
+
+    border: 2px solid #FF8A00;
+    border-radius: 6px;
+}
+
+button#btn-logout:hover {
+    color: #2F0153;
+    font-weight: 600;
+    background-color: #FF8A00;
+}
+
+/*Video Details Styles*/
+.indicator-img#link {
+    margin-top: 100px;
+
+    position: relative;
+}
+
+#input-video-url {
+    display: inline;
+
+    width: 600px;
+    height: 50px;
+
+    padding-left: 15px;
+
+    position: absolute;
+    top: 200;
+    left: 110;
+
+    font-size: 24px;
+    color: white;
+    background-color: #2F0153;
+    border: 2px solid white;
+    border-radius: 6px;
+}
+
+button#btn-search {
+    width: 50px;
+    height: 50px;
+
+    position: absolute;
+    top: 200;
+    left: 720;
+
+    background-color: #FF8A00;
+    border: 2px solid #FF8A00;
+    border-radius: 6px;
+}
+
+#img-search {
+    width: 40;
+    height: 40;
+
+    position: relative;
+    right: 4;
+}
+
+/*Data Styles*/
+.indicator-img#data {
+    position: relative;
+    margin-top: 60px;
+}
+
+table {
+    width: 60%;
+    margin-top: -40;
+    position: absolute;
+    left: 110;
+
+    border: 2px solid white; 
+    border-radius: 6px;
+    border-collapse: collapse;
+    border-style: hidden;
+    box-shadow: 0 0 0 2px white; 
+    color: white;
+
+}
+
+td, th {
+    border: 1px solid white;
+    
+    text-align: left;
+    padding: 8px;
+}
+
+th:nth-child(1) {
+    border-top-left-radius: 6px;
+}
+
+th:last-child {
+    border-top-right-radius: 6px;
+}
+
+th {
+    background-color: #FF8A00;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+td {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+th:nth-child(2) {
+    width: auto;
+}
+
