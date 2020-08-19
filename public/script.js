@@ -6,8 +6,8 @@ const loginButton = document.getElementById('btn-login');
 const logoutButton = document.getElementById('btn-logout');
 const loggedOutContent = document.getElementById('logged-out-content');
 const loggedInContent = document.getElementById('logged-in-content');
-const channelNameInput = document.getElementById('input-channel-name');
-const getDataButton = document.getElementById('btn-get-data');
+const videoUrlInput = document.getElementById('input-video-url');
+const getDataButton = document.getElementById('btn-search');
 
 const defaultChannelId= 'UCl3HSwd9i67Mjs4DfldgZmg'
 
@@ -48,16 +48,36 @@ function handleLogout() {
     gapi.auth2.getAuthInstance().signOut(); 
 }
 
-function getChannel(channelId) {
+function populateAccountDetails() {
     var profile = gapi.auth2.getAuthInstance().currentUser.get().getBasicProfile();
-    
-    gapi.client.youtube.channels
-    .list({
-        part: 'snippet,contentDetails,statistics',
-        id: channelId
 
-    }).then(response => {
+    document.getElementById('username').innerHTML = profile.getName();
+    document.getElementById('email').innerHTML = profile.getEmail() + "good";
+}
+
+function getExtractedYoutubeVideoIdFromUrl(url) {
+    url = url.split(/(vi\/|v=|\/v\/|youtu\.be\/|\/embed\/)/);
+    return (url[2] !== undefined) ? url[2].split(/[^0-9a-z_\-]/i)[0] : url[0];
+ }
+
+function getVideoDetails() {
+    var url = getExtractedYoutubeVideoIdFromUrl(videoUrlInput.value);
+    
+    if(url === "") {
+        alert("Please enter a valid URL");
+    } else {
+        console.log("The video id is:" + url);
+
+        gapi.client.youtube.videos
+        .list({
+            part: 'snippet,contentDetails,statistics',
+            id: url
+
+        }).then(response => {
         console.log(response);
         
-    }).catch(err => alert('No channel by that name'));
+        }).catch(err => alert('No video found with that URL. Please check the URL'));
+    }
 }
+
+getDataButton.onclick = getVideoDetails;
