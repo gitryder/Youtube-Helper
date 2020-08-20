@@ -18,6 +18,7 @@
   "homepage": "https://github.com/gitryder/Youtube-Views-Export#readme",
   "dependencies": {
     "@material/textfield": "^7.0.0",
-    "firebase-tools": "^8.7.0"
+    "firebase-tools": "^8.7.0",
+    "jquery": "^3.5.1"
   }
 }

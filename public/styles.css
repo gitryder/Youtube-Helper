@@ -1,225 +1,225 @@
 body {
-    background-color: #2F0153;
+  background-color: #2f0153;
 
-    margin: 0;
-    font-family: "Inter";
-    font-style: normal;
+  margin: 0;
+  font-family: "Inter";
+  font-style: normal;
 }
 
 /*
 Logged-Out Content Styles
 */
 
+#logged-in-content {
+  display: none;
+}
+
 #logged-out-content {
-    display: block;
-	width: 100%;
-    height: 50%;
-    position: absolute;
-    top: 50%;
-    left:50%;
-    transform: translate(-50%, -50%);
+  display: block;
+  width: 100%;
+  height: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 .app-title {
-    font-weight: 600;
-    font-size: 64px;
+  font-weight: 600;
+  font-size: 64px;
 
-    color: white;
-    text-align: center;
+  color: white;
+  text-align: center;
 }
 
 #btn-login {
-	background-color: #2F0153;
-	width: 150px;
-    height: 60px;
-    
-    margin: 10px 0px;
+  background-color: #2f0153;
+  width: 150px;
+  height: 60px;
 
-	position: absolute;
-    top: 50%;
-    left:50%;
-    transform: translate(-50%, -50%);
+  margin: 10px 0px;
 
-	font-weight: 600;
-	font-size: 25px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 
-	border: 3px solid #FF8A00;
-	border-radius: 20px;
-	color: white; 
-	padding: 5px 10px;	
+  font-weight: 600;
+  font-size: 25px;
+
+  border: 3px solid #ff8a00;
+  border-radius: 20px;
+  color: #ff8a00;
+  padding: 5px 10px;
 }
 
 #btn-login:hover {
-    background-color: #FF8A00;
-    color: white;
+  position: relative;
+  background-color: #ff8a00;
+  color: white;
 }
 
 /*
 Logged-In Content Styles
 */
-#logged-in-content {
-    display: none;
-}
 
 /* Account Details Styles */
 div#logged-in-content {
-    padding: 10px 15px 0px 10px;
+  padding: 10px 15px 0px 10px;
 }
 
 .indicator-img {
-    width: 50px;
-    height: 50px;
-
-    position: relative;
-    margin-left: 30px;
+  position: relative;
+  margin-left: 15px;
 }
 
 .indicator-img#account {
-    margin-top: 30px;
+  margin-top: 30px;
 }
 
 .account-details {
-    color: white;
+  color: white;
 }
 
 .account-details#username {
-    margin: 0;
+  margin: 0;
 
-    display: inline;
-    position: absolute; 
-    top: 36;   
-    left: 110; 
+  display: inline;
+  position: absolute;
+  top: 36;
+  left: 95;
 
-    font-size: 42;
-    font-weight: 600;
+  font-size: 42;
+  font-weight: 600;
 }
 
 .account-details#email {
-    margin: 0 0 0 0;
+  margin: 0 0 0 0;
 
-    position: absolute;
-    left: 110;
+  position: absolute;
+  left: 95;
 
-    font-size: 25;
+  font-size: 25;
 }
 
 button#btn-logout {
-    width: 120px;
-    height: 35px;
+  width: 120px;
+  height: 35px;
 
-    position: absolute;
-    top: 125;
-    left: 110;
+  position: absolute;
+  top: 125;
+  left: 95;
 
-    font-size: 20;
-    font-weight: 500;
-    color: #FF8A00;
-    background-color: #2F0153;
+  font-size: 20;
+  font-weight: 500;
+  color: #ff8a00;
+  background-color: #2f0153;
 
-    border: 2px solid #FF8A00;
-    border-radius: 6px;
+  border: 2px solid #ff8a00;
+  border-radius: 6px;
 }
 
 button#btn-logout:hover {
-    color: #2F0153;
-    font-weight: 600;
-    background-color: #FF8A00;
+  color: white;
+  font-weight: 600;
+  background-color: #ff8a00;
 }
 
 /*Video Details Styles*/
 .indicator-img#link {
-    margin-top: 100px;
+  margin-top: 100px;
 
-    position: relative;
+  position: relative;
 }
 
 #input-video-url {
-    display: inline;
+  display: inline;
 
-    width: 600px;
-    height: 50px;
+  width: 602px;
+  height: 50px;
 
-    padding-left: 15px;
+  padding-left: 15px;
 
-    position: absolute;
-    top: 200;
-    left: 110;
+  position: absolute;
+  top: 200;
+  left: 95;
 
-    font-size: 24px;
-    color: white;
-    background-color: #2F0153;
-    border: 2px solid white;
-    border-radius: 6px;
+  font-size: 22px;
+  color: white;
+  font-weight: 500;
+  background-color: #2f0153;
+  border: 2px solid white;
+  border-radius: 6px;
 }
 
 button#btn-search {
-    width: 50px;
-    height: 50px;
+  width: 50px;
+  height: 50px;
 
-    position: absolute;
-    top: 200;
-    left: 720;
+  position: absolute;
+  top: 200;
+  left: 720;
 
-    background-color: #FF8A00;
-    border: 2px solid #FF8A00;
-    border-radius: 6px;
+  background-color: #2f0153;
+  border: 2px solid #ff8a00;
+  border-radius: 100px;
+}
+
+button#btn-search:hover {
+  background-color: #ff8a00;
 }
 
 #img-search {
-    width: 40;
-    height: 40;
+  width: 30;
+  height: 30;
 
-    position: relative;
-    right: 4;
+  position: relative;
+  right: 1;
+  bottom: 0;
 }
 
 /*Data Styles*/
 .indicator-img#data {
-    position: relative;
-    margin-top: 60px;
+  position: relative;
+  margin-top: 60px;
 }
 
 table {
-    width: 85%;
-    margin-top: -40;
-    position: absolute;
-    left: 110;
+  width: 90%;
+  margin-top: -40;
+  position: absolute;
+  left: 95;
 
-    border: 2px solid white; 
-    border-radius: 6px;
-    border-collapse: collapse;
-    border-style: hidden;
-    box-shadow: 0 0 0 2px white; 
-    color: white;
-
+  border: 2px solid white;
+  border-radius: 6px;
+  border-collapse: collapse;
+  border-style: hidden;
+  box-shadow: 0 0 0 2px white;
+  color: white;
 }
 
-td, th {
-    border: 1px solid white;
-    
-    text-align: left;
-    padding: 8px;
+td,
+th {
+  border: 1px solid white;
+
+  text-align: left;
+  padding: 8px;
 }
 
 th:nth-child(1) {
-    border-top-left-radius: 6px;
+  border-top-left-radius: 6px;
 }
 
 th:last-child {
-    border-top-right-radius: 6px;
+  border-top-right-radius: 6px;
 }
 
 th {
-    background-color: #FF8A00;
-    font-size: 18px;
-    font-weight: 600;
+  background-color: #ff8a00;
+  font-size: 18px;
+  font-weight: 600;
 }
 
 td {
-    font-size: 16px;
-    font-weight: 500;
+  font-size: 16px;
+  font-weight: 500;
 }
-
-th:nth-child(2) {
-    width: auto;
-}
-
