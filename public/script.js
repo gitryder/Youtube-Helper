@@ -124,11 +124,9 @@ function getVideoDetails() {
         */
 
         const output = [
-          video.snippet.title,
-          getFormattedVideoDuration(video.contentDetails.duration),
-          numberWithCommas(video.statistics.viewCount),
           getFormattedPublishedDate(video.snippet.publishedAt),
-          videoUrlInput.value,
+          video.snippet.title,
+          numberWithCommas(video.statistics.viewCount)
         ];
 
         /*document.getElementById('myTable').innerHTML += output;*/
@@ -150,11 +148,9 @@ function updateTableWithData(newdata) {
       myDataTable = $("#myTable").DataTable({
         data: dataset,
         columns: [
+          { title: "Published Date" },
           { title: "Title" },
-          { title: "Duration" },
           { title: "Views" },
-          { title: "Published" },
-          { title: "URL" },
         ],
       });
     });
@@ -170,11 +166,9 @@ function updateTableWithData(newdata) {
       myDataTable = $("#myTable").DataTable({
         data: dataset,
         columns: [
+          { title: "Published Date" },
           { title: "Title" },
-          { title: "Duration" },
           { title: "Views" },
-          { title: "Published" },
-          { title: "URL" },
         ],
       });
     });
