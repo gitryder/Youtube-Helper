@@ -3,9 +3,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css" type="text/css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css"/> 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"> 
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet"> 
-    <link href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet"> 
     <title>Youtube Data Helper</title>
 </head>
 <body>
@@ -31,27 +30,15 @@
         </div>
 
         <div id="main-content">
-            <img class="indicator-img" id="data" src="/res/data.svg" alt="data-svg">
-            <table id="myTable">
-                <tr>
-                    <th>Title</th>
-                    <th>Duration</th>
-                    <th>Views</th>
-                    <th>Published</th>
-                    <th>URL</th>
-                </tr>
+            <!--<img class="indicator-img" id="data" src="/res/data.svg" alt="data-svg">-->
+            <table id="myTable" class="display">
+                
             </table>
         </div>
     </div>
     </div>
+    <script src="jquery-3.5.1.js"></script> 
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.21/af-2.3.5/cr-1.5.2/datatables.min.js"></script>    <script src="script.js"></script>
     <script async defer src="https://apis.google.com/js/api.js" onload="this.onload=function(){};handleClientLoad()" onreadystatechange="if (this.readyState === 'complete') this.onload()"></script>
-    <script src="script.js"></script>
-    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
-    <script>
-        $(document).ready( function () {
-            $('#myTable').DataTable();
-        } );
-    </script>
-
 </body>
 </html> 

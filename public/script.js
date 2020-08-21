@@ -13,6 +13,8 @@ const videoUrlInput = document.getElementById("input-video-url");
 const getDataButton = document.getElementById("btn-search");
 
 const defaultChannelId = "UCl3HSwd9i67Mjs4DfldgZmg";
+var dataset = [];
+var myDataTable;
 
 function handleClientLoad() {
   gapi.load("client:auth2", initClient);
@@ -64,22 +66,28 @@ function populateAccountDetails() {
 }
 
 function numberWithCommas(x) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
 function getFormattedVideoDuration(string) {
-    if (string.includes("H")){
-        var mIndex = string.indexOf("M") + 1;
-        var hIndex = string.indexOf("H") + 1;
-        return string.slice(2, hIndex) + " " + string.slice(hIndex, mIndex) + " " + string.slice(mIndex);
-    } else {
-        var reqIndex = string.indexOf("M") + 1;
-        return string.slice(2, reqIndex) + " " + string.slice(reqIndex);
-    }
+  if (string.includes("H")) {
+    var mIndex = string.indexOf("M") + 1;
+    var hIndex = string.indexOf("H") + 1;
+    return (
+      string.slice(2, hIndex) +
+      " " +
+      string.slice(hIndex, mIndex) +
+      " " +
+      string.slice(mIndex)
+    );
+  } else {
+    var reqIndex = string.indexOf("M") + 1;
+    return string.slice(2, reqIndex) + " " + string.slice(reqIndex);
+  }
 }
 
 function getFormattedPublishedDate(string) {
-    return string.substring(0, string.indexOf("T"));
+  return string.substring(0, string.indexOf("T"));
 }
 
 function getExtractedYoutubeVideoIdFromUrl(url) {
@@ -101,10 +109,9 @@ function getVideoDetails() {
         id: url,
       })
       .then((response) => {
-        console.log(response);
 
         const video = response.result.items[0];
-
+        /*
         const output = `
             <tr>
                 <td>${video.snippet.title}</td>
@@ -114,9 +121,19 @@ function getVideoDetails() {
                 <td><a href="${videoUrlInput.value}">${videoUrlInput.value}</a></td>
             </tr>
         `;
+        */
 
-        console.log(output);
-        document.getElementById('myTable').innerHTML += output;
+        const output = [
+          video.snippet.title,
+          getFormattedVideoDuration(video.contentDetails.duration),
+          numberWithCommas(video.statistics.viewCount),
+          getFormattedPublishedDate(video.snippet.publishedAt),
+          videoUrlInput.value,
+        ];
+
+        /*document.getElementById('myTable').innerHTML += output;*/
+        updateTableWithData(output);
+
         videoUrlInput.value = "";
       })
       .catch((err) =>
@@ -125,5 +142,43 @@ function getVideoDetails() {
   }
 }
 
-getDataButton.onclick = getVideoDetails;
+function updateTableWithData(newdata) {
+  if (dataset.length == 0) {
+    dataset.push(newdata);
 
+    $(document).ready(function () {
+      myDataTable = $("#myTable").DataTable({
+        data: dataset,
+        columns: [
+          { title: "Title" },
+          { title: "Duration" },
+          { title: "Views" },
+          { title: "Published" },
+          { title: "URL" },
+        ],
+      });
+    });
+
+    console.log(dataset);
+
+  } else {
+    dataset.push(newdata);
+
+    myDataTable.destroy();
+
+    $(document).ready(function () {
+      myDataTable = $("#myTable").DataTable({
+        data: dataset,
+        columns: [
+          { title: "Title" },
+          { title: "Duration" },
+          { title: "Views" },
+          { title: "Published" },
+          { title: "URL" },
+        ],
+      });
+    });
+  }
+}
+
+getDataButton.onclick = getVideoDetails;
