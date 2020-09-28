@@ -35,6 +35,16 @@ function initClient() {
     });
 }
 
+var config = {
+  apiKey: " AIzaSyBq8LrNSf4C_c2fHsu9g-vQi7RfgG4lrOk",
+  authDomain: "views-exporter.firebaseapp.com",
+  databaseURL: "https://views-exporter.firebaseio.com/",
+};
+firebase.initializeApp(config);
+
+// Get a reference to the database service
+var database = firebase.database();
+
 function updateSigninStatus(isSignedIn) {
   if (isSignedIn) {
     loggedOutContent.style.display = "none";
@@ -109,7 +119,6 @@ function getVideoDetails() {
         id: url,
       })
       .then((response) => {
-
         const video = response.result.items[0];
         /*
         const output = `
@@ -126,11 +135,17 @@ function getVideoDetails() {
         const output = [
           getFormattedPublishedDate(video.snippet.publishedAt),
           video.snippet.title,
-          numberWithCommas(video.statistics.viewCount)
+          numberWithCommas(video.statistics.viewCount),
         ];
 
         /*document.getElementById('myTable').innerHTML += output;*/
         updateTableWithData(output);
+        addDataToFirebase(
+          url,
+          getFormattedPublishedDate(video.snippet.publishedAt),
+          video.snippet.title,
+          numberWithCommas(video.statistics.viewCount)
+        );
 
         videoUrlInput.value = "";
       })
@@ -156,7 +171,6 @@ function updateTableWithData(newdata) {
     });
 
     console.log(dataset);
-
   } else {
     dataset.push(newdata);
 
@@ -176,3 +190,11 @@ function updateTableWithData(newdata) {
 }
 
 getDataButton.onclick = getVideoDetails;
+
+function addDataToFirebase(id, publishedAt, title, viewCount) {
+  database.ref("videos/" + id).set({
+    publishedAt: publishedAt,
+    title: title,
+    viewCount: viewCount,
+  });
+}
