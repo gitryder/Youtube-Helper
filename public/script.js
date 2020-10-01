@@ -57,6 +57,9 @@ function updateSigninStatus(isSignedIn) {
   }
 }
 
+//Get the data from Firebase
+retrieveDataFromFirebase();
+
 function handleLogin() {
   gapi.auth2.getAuthInstance().signIn();
 }
@@ -153,6 +156,8 @@ function getVideoDetails() {
         alert("No video found with that URL. Please check the URL")
       );
   }
+
+  setupButtonSelectedRowDelete();
 }
 
 function updateTableWithData(newdata) {
@@ -191,10 +196,36 @@ function updateTableWithData(newdata) {
 
 getDataButton.onclick = getVideoDetails;
 
+function setupButtonSelectedRowDelete() {
+  // Make the button visible
+  document.getElementById("btn-table-row-delete").style.display = "block";
+
+  $("#myTable tbody").on("click", "tr", function () {
+    if ($(this).hasClass("selected")) {
+      $(this).removeClass("selected");
+    } else {
+      myDataTable.$("tr.selected").removeClass("selected");
+      $(this).addClass("selected");
+    }
+  });
+
+  $("#btn-table-row-delete").click(function () {
+    myDataTable.row(".selected").remove().draw(false);
+  });
+}
+
 function addDataToFirebase(id, publishedAt, title, viewCount) {
   database.ref("videos/" + id).set({
     publishedAt: publishedAt,
     title: title,
     viewCount: viewCount,
+  });
+}
+
+function retrieveDataFromFirebase() {
+  var videoDataRef = firebase.database().ref("videos/");
+
+  videoDataRef.on("value", function (snapshot) {
+    console.log("Firebase data: " + snapshot.val());
   });
 }
