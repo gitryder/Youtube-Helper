@@ -44,9 +44,10 @@ Logged-Out Content Styles
   margin: 10px 0px;
 
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 40%;
+  left: 45%;
+
+  font-family: "Inter";
 
   font-weight: 600;
   font-size: 25px;

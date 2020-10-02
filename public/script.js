@@ -196,7 +196,7 @@ function addDataToDataTable(data) {
 }
 
 function deleteDataFromFirebase(data) {
-    //TO DO
+    //TO-DO
 }
 
 function retrieveDataFromFirebase() {
