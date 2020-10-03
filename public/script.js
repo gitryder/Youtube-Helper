@@ -109,17 +109,17 @@ function getExtractedYoutubeVideoIdFromUrl(url) {
 }
 
 function getVideoDetails() {
-    var url = getExtractedYoutubeVideoIdFromUrl(videoUrlInput.value);
+    var videoId = getExtractedYoutubeVideoIdFromUrl(videoUrlInput.value);
 
-    if (url === "") {
+    if (videoId === "") {
         alert("Please enter a valid URL");
     } else {
-        console.log("The video id is:" + url);
+        console.log("The video id is:" + videoId);
 
         gapi.client.youtube.videos
             .list({
                 part: "snippet,contentDetails,statistics",
-                id: url,
+                id: videoId,
             })
             .then((response) => {
                 const video = response.result.items[0];
@@ -135,13 +135,13 @@ function getVideoDetails() {
                 };
 
                 addDataToFirebase(
-                    url,
+                    videoId,
                     payload.publishedAt,
                     payload.title,
                     payload.viewCount
                 );
 
-                addDataToDataTable(payload);
+                addDataToDataTable(videoId, payload);
 
                 videoUrlInput.value = "";
             })
@@ -154,6 +154,7 @@ function getVideoDetails() {
 function initDataTable() {
     myDataTable = $("#myTable").DataTable({
         columns: [
+            { title: "id", visible: false, searchable: false},
             { title: "Published Date" },
             { title: "Title" },
             { title: "Views" },
@@ -177,9 +178,10 @@ function setupButtonSelectedRowDelete() {
 
     $("#btn-table-row-delete").click(function () {
         var deletedRowData = myDataTable.row(".selected").data();
-        console.log(deletedRowData);
+        var deletedRowVideoId = deletedRowData[0];
 
         myDataTable.row(".selected").remove().draw(false);
+        deleteDataFromFirebase(deletedRowVideoId);
     });
 }
 
@@ -191,12 +193,12 @@ function addDataToFirebase(id, publishedAt, title, viewCount) {
     });
 }
 
-function addDataToDataTable(data) {
-    myDataTable.row.add([data.publishedAt, data.title, data.viewCount]).draw();
+function addDataToDataTable(id, data) {
+    myDataTable.row.add([id, data.publishedAt, data.title, data.viewCount]).draw();
 }
 
-function deleteDataFromFirebase(data) {
-    //TO-DO
+function deleteDataFromFirebase(deletedRowVideoId) {
+    firebase.database().ref("videos/" + deletedRowVideoId).remove();
 }
 
 function retrieveDataFromFirebase() {
@@ -205,10 +207,11 @@ function retrieveDataFromFirebase() {
 
     videoDataRef.on("value", function (snapshot) {
         snapshot.forEach(function (childSnapshot) {
-            //var childKey = childSnapshot.key;
+            var childKey = childSnapshot.key;
             var childData = childSnapshot.val();
 
-            addDataToDataTable(childData);
+
+            addDataToDataTable(childKey, childData);
         });
     });
 
