@@ -153,6 +153,7 @@ function getVideoDetails() {
 
 function initDataTable() {
     myDataTable = $("#myTable").DataTable({
+        autoWidth: false,
         columns: [
             { title: "id", visible: false, searchable: false},
             { title: "Published Date" },

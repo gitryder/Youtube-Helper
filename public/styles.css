@@ -1,10 +1,11 @@
 :root {
   --bg-color: white;
+  --font-color: black;
 }
 
 body {
   background-color: var(--bg-color);
-  color: black;
+  color: var(--font-color);
 
   margin: 0;
   font-family: "Inter";
@@ -32,7 +33,6 @@ Logged-Out Content Styles
   font-weight: 600;
   font-size: 64px;
 
-  color: black;
   text-align: center;
 }
 
@@ -122,8 +122,8 @@ button#btn-logout {
 }
 
 button#btn-logout:hover {
-  color: white;
   font-weight: 600;
+  color: white;
   background-color: #ff8a00;
 }
 
@@ -147,8 +147,8 @@ button#btn-table-row-delete {
 }
 
 button#btn-table-row-delete:hover {
-  color: white;
   font-weight: 600;
+  color: white;
   background-color: tomato;
 }
 
@@ -163,7 +163,7 @@ button#btn-table-row-delete:hover {
   display: inline;
 
   width: 602px;
-  height: 50px;
+  height: 45px;
 
   padding-left: 15px;
 
@@ -172,22 +172,22 @@ button#btn-table-row-delete:hover {
   left: 95;
 
   font-family: "Inter";
-  font-style: normal;
-
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 400;
+  color: var(--font-color);
+
   background-color: var(--bg-color);
   border: 2px solid #ff8a00;
   border-radius: 6px;
 }
 
 button#btn-search {
-  width: 50px;
-  height: 50px;
+  width: 45px;
+  height: 45px;
 
   position: absolute;
   top: 200;
-  left: 720;
+  left: 710;
 
   background-color: var(--bg-color);
   border: 2px solid #ff8a00;
@@ -196,11 +196,12 @@ button#btn-search {
 
 button#btn-search:hover {
   background-color: #ff8a00;
+  color: var(--font-color);
 }
 
 #img-search {
-  width: 30;
-  height: 30;
+  width: 25;
+  height: 25;
 
   position: relative;
   right: 1;
@@ -213,48 +214,19 @@ button#btn-search:hover {
   margin-top: 60px;
 }
 
-/*
-
-table {
-  
-
-  border-collapse: collapse;
-  border-style: hidden;  
+.dataTables_wrapper .dataTables_length, .dataTables_wrapper .dataTables_filter, .dataTables_wrapper .dataTables_info, .dataTables_wrapper .dataTables_processing, .dataTables_wrapper .dataTables_paginate {
+    margin-bottom: 10px !important;
 }
 
-td,
-th {
-
-  text-align: left;
-  padding: 8px;
+thead {
+    color: white !important;
 }
 
-th:nth-child(1) {
-  border-top-left-radius: 6px;
+.selected {
+    background-color: tomato !important;
+    color: whitesmoke;
+    font-weight: 700;
 }
-
-th:last-child {
-  border-top-right-radius: 6px;
-}
-
-th {
-  background-color: #ff8a00;
-  font-size: 18px;
-  font-weight: 600;
-}
-
-td {
-  background-color: var(--bg-color);
-
-  font-size: 16px;
-  font-weight: 400;
-}
-
-#myTable_filter {
-  margin-bottom: 6px;
-}
-*/
-
 
 #main-content {
   margin-top: 60px;
