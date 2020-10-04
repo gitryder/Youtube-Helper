@@ -141,7 +141,7 @@ function getVideoDetails() {
                     payload.viewCount
                 );
 
-                addDataToDataTable(videoId, payload);
+                //addDataToDataTable(videoId, payload);
 
                 videoUrlInput.value = "";
             })
@@ -198,7 +198,12 @@ function addDataToDataTable(id, data) {
 }
 
 function deleteDataFromFirebase(deletedRowVideoId) {
+    clearDataTable();
     firebase.database().ref("videos/" + deletedRowVideoId).remove();
+}
+
+function clearDataTable() {
+    myDataTable.clear();
 }
 
 function retrieveDataFromFirebase() {
@@ -206,10 +211,11 @@ function retrieveDataFromFirebase() {
     var videoDataRef = firebase.database().ref("videos/");
 
     videoDataRef.on("value", function (snapshot) {
+
+        clearDataTable();
         snapshot.forEach(function (childSnapshot) {
             var childKey = childSnapshot.key;
             var childData = childSnapshot.val();
-
 
             addDataToDataTable(childKey, childData);
         });
