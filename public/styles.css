@@ -1,5 +1,7 @@
 :root {
   --bg-color: white;
+  --accent-color-one: #1FD537;
+  --accent-color-two: #E40010;
   --font-color: black;
 }
 
@@ -52,14 +54,14 @@ Logged-Out Content Styles
   font-weight: 600;
   font-size: 25px;
 
-  border: 3px solid #ff8a00;
+  border: 3px solid var(--accent-color-one);
   border-radius: 20px;
-  color: #ff8a00;
+  color: var(--accent-color-one);
   padding: 5px 10px;
 }
 
 #btn-login:hover {
-  background-color: #ff8a00;
+  background-color: var(--accent-color-one);
   color: white;
 }
 
@@ -114,17 +116,17 @@ button#btn-logout {
 
   font-size: 20;
   font-weight: 500;
-  color: #ff8a00;
+  color: var(--accent-color-one);
   background-color: var(--bg-color);
 
-  border: 2px solid #ff8a00;
+  border: 2px solid var(--accent-color-one);
   border-radius: 6px;
 }
 
 button#btn-logout:hover {
   font-weight: 600;
   color: white;
-  background-color: #ff8a00;
+  background-color: var(--accent-color-one);
 }
 
 button#btn-table-row-delete {
@@ -139,17 +141,17 @@ button#btn-table-row-delete {
 
   font-size: 20;
   font-weight: 500;
-  color: tomato;
+  color: var(--accent-color-two);
   background-color: var(--bg-color);
 
-  border: 2px solid tomato;
+  border: 2px solid var(--accent-color-two);
   border-radius: 6px;
 }
 
 button#btn-table-row-delete:hover {
   font-weight: 600;
   color: white;
-  background-color: tomato;
+  background-color: var(--accent-color-two);
 }
 
 /*Video Details Styles*/
@@ -177,7 +179,7 @@ button#btn-table-row-delete:hover {
   color: var(--font-color);
 
   background-color: var(--bg-color);
-  border: 2px solid #ff8a00;
+  border: 2px solid var(--accent-color-one);
   border-radius: 6px;
 }
 
@@ -190,12 +192,12 @@ button#btn-search {
   left: 710;
 
   background-color: var(--bg-color);
-  border: 2px solid #ff8a00;
+  border: 2px solid var(--accent-color-one);
   border-radius: 100px;
 }
 
 button#btn-search:hover {
-  background-color: #ff8a00;
+  background-color: var(--accent-color-one);
   color: var(--font-color);
 }
 
@@ -214,8 +216,21 @@ button#btn-search:hover {
   margin-top: 60px;
 }
 
+#myTable {
+    background-color: var(--accent-color-one);
+}
+
 .dataTables_wrapper .dataTables_length, .dataTables_wrapper .dataTables_filter, .dataTables_wrapper .dataTables_info, .dataTables_wrapper .dataTables_processing, .dataTables_wrapper .dataTables_paginate {
     margin-bottom: 10px !important;
+}
+
+table.dataTable thead th, table.dataTable thead td {
+    padding: 10px 18px !important;
+    border-bottom: none !important;
+}
+
+table.dataTable.no-footer {
+	border-bottom: 1px solid #ddd !important;
 }
 
 thead {
@@ -223,7 +238,7 @@ thead {
 }
 
 .selected {
-    background-color: tomato !important;
+    background-color: var(--accent-color-two) !important;
     color: whitesmoke;
     font-weight: 700;
 }
