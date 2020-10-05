@@ -21,6 +21,7 @@
             <h1 class="account-details" id="username">Name Surname</h1>
             <h2 class="account-details" id="email">email@email.com</h1>
             <button id="btn-logout">Logout</button>
+            <button onclick="toggleDeleteAllDataButton()" id="btn-superpower">Unlock Superpower</button>
         </div>
 
         <div id="video-details">
@@ -32,6 +33,7 @@
         <div id="main-content">
             <!--<img class="indicator-img" id="data" src="/res/data.svg" alt="data-svg">-->
             <button id="btn-table-row-delete">Delete Selected Row</button>
+            <button onclick="deleteAllDataFromFirebase()" id="btn-table-all-row-delete">Delete All Entries</button>
             <table id="myTable" class="display cell-border" style="width: 100%;">
                 
             </table>

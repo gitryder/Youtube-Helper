@@ -12,6 +12,11 @@ const loggedInContent = document.getElementById("logged-in-content");
 const videoUrlInput = document.getElementById("input-video-url");
 const getDataButton = document.getElementById("btn-search");
 
+const btnSuperpower = document.getElementById("btn-superpower");
+const btnAllTableRowDelete = document.getElementById(
+    "btn-table-all-row-delete"
+);
+
 const defaultChannelId = "UCl3HSwd9i67Mjs4DfldgZmg";
 var dataset = new Array();
 var myDataTable;
@@ -155,7 +160,7 @@ function initDataTable() {
     myDataTable = $("#myTable").DataTable({
         autoWidth: false,
         columns: [
-            { title: "id", visible: false, searchable: false},
+            { title: "id", visible: false, searchable: false },
             { title: "Published Date" },
             { title: "Title" },
             { title: "Views" },
@@ -165,8 +170,10 @@ function initDataTable() {
 
 getDataButton.onclick = getVideoDetails;
 
+document.getElementById("btn-table-all-row-delete").onclick;
+
 function setupButtonSelectedRowDelete() {
-    document.getElementById("btn-table-row-delete").style.display = "block";
+    document.getElementById("btn-table-row-delete").style.display = "inline";
 
     $("#myTable tbody").on("click", "tr", function () {
         if ($(this).hasClass("selected")) {
@@ -186,21 +193,48 @@ function setupButtonSelectedRowDelete() {
     });
 }
 
+function isHidden(element) {
+    var style = window.getComputedStyle(element);
+    return style.display === "none";
+}
+
+function toggleDeleteAllDataButton() {
+    if (isHidden(btnAllTableRowDelete)) {
+        btnAllTableRowDelete.style.display = "inline";
+        btnSuperpower.style.display = "none";
+    } else {
+        btnAllTableRowDelete.style.display = "none";
+        btnSuperpower.style.display = "inline";
+    }
+}
+
 function addDataToFirebase(id, publishedAt, title, viewCount) {
     database.ref("videos/" + id).set({
         publishedAt: publishedAt,
-        title: title,   
+        title: title,
         viewCount: viewCount,
     });
 }
 
 function addDataToDataTable(id, data) {
-    myDataTable.row.add([id, data.publishedAt, data.title, data.viewCount]).draw();
+    myDataTable.row
+        .add([id, data.publishedAt, data.title, data.viewCount])
+        .draw();
 }
 
 function deleteDataFromFirebase(deletedRowVideoId) {
     clearDataTable();
-    firebase.database().ref("videos/" + deletedRowVideoId).remove();
+    firebase
+        .database()
+        .ref("videos/" + deletedRowVideoId)
+        .remove();
+}
+
+function deleteAllDataFromFirebase() {
+    myDataTable.clear().draw();
+    firebase.database().ref("videos/").remove();
+
+    toggleDeleteAllDataButton()
 }
 
 function clearDataTable() {
@@ -212,7 +246,6 @@ function retrieveDataFromFirebase() {
     var videoDataRef = firebase.database().ref("videos/");
 
     videoDataRef.on("value", function (snapshot) {
-
         clearDataTable();
         snapshot.forEach(function (childSnapshot) {
             var childKey = childSnapshot.key;

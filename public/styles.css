@@ -1,7 +1,9 @@
 :root {
   --bg-color: white;
-  --accent-color-one: #1FD537;
+  --accent-color-one: #1FD537 ;
   --accent-color-two: #E40010;
+  --accent-color-four: #ff8f0f;
+  --accent-color-three: #0099ff;
   --font-color: black;
 }
 
@@ -108,6 +110,8 @@ button#btn-logout {
   width: 120px;
   height: 35px;
 
+  display: inline;
+
   position: absolute;
   top: 125;
   left: 95;
@@ -128,6 +132,33 @@ button#btn-logout:hover {
   color: white;
   background-color: var(--accent-color-one);
 }
+
+button#btn-superpower {
+    width: 230px;
+    height: 35px;
+    
+    position: absolute;
+    top: 125;
+    left: 215;
+
+    margin-left: 10px;
+  
+    font-family: "Inter";
+  
+    font-size: 20;
+    font-weight: 500;
+    color: var(--accent-color-three);
+    background-color: var(--bg-color);
+  
+    border: 2px solid var(--accent-color-three);
+    border-radius: 6px;
+  }
+  
+  button#btn-superpower:hover {
+    font-weight: 600;
+    color: white;
+    background-color: var(--accent-color-three);
+  }
 
 button#btn-table-row-delete {
   width: 250px;
@@ -153,6 +184,32 @@ button#btn-table-row-delete:hover {
   color: white;
   background-color: var(--accent-color-two);
 }
+
+button#btn-table-all-row-delete {
+    width: 250px;
+    height: 35px;
+  
+    display: none;
+  
+    margin-bottom: 15px;
+    margin-left: 5px;
+  
+    font-family: "Inter";
+  
+    font-size: 20;
+    font-weight: 500;
+    color: var(--accent-color-two);
+    background-color: var(--bg-color);
+  
+    border: 2px solid var(--accent-color-two);
+    border-radius: 6px;
+  }
+  
+  button#btn-table-all-row-delete:hover {
+    font-weight: 600;
+    color: white;
+    background-color: var(--accent-color-two);
+  }
 
 /*Video Details Styles*/
 .indicator-img#link {
@@ -238,7 +295,7 @@ thead {
 }
 
 .selected {
-    background-color: var(--accent-color-two) !important;
+    background-color: var(--accent-color-three) !important;
     color: whitesmoke;
     font-weight: 700;
 }
